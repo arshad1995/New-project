@@ -1,6 +1,6 @@
 .image img {
-  width: 350px;
-  height: 550px;
+  width: 400px;
+  height: 600px;
   border-radius: 6px;
 }
 .content1 {
@@ -10,8 +10,8 @@
   padding: 12px;
 }
 .content2 {
-  position: absolute;
-  top: 0;
+  position: relative;
+  top: 2cm;
   background: rgb(0, 0, 0);
   background: rgba(0, 0, 0, 0.5);
   color: #f1f1f1;
@@ -21,5 +21,5 @@
   font-size: 4mm;
 }
 .all {
-  margin: 0 440px 0 440px;
+  margin: 10px 440px 0 440px;
 }

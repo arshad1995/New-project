@@ -4,11 +4,7 @@ import "./CARD_2.css";
 const CARD_2 = props => {
   return (
     <div className="container">
-      <img
-        src={
-          "https://smedia2.intoday.in/btmt/images/stories/apple_660_071816125132_080316050918.jpg"
-        }
-      />
+      <img src={props.src} />
 
       <div className="content">
         <p className="heading">{props.Heading}</p>

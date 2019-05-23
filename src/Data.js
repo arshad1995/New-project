@@ -5,30 +5,52 @@ import CARD_2 from "./components/CARD_2";
 import CARD_3 from "./components/CARD_3";
 
 class Data extends Component {
+  state = {
+    data: null
+  };
+  componentDidMount() {
+    fetch(`http://localhost:3000/feeds/${this.props.location.id}`)
+      .then(data => data.json())
+      .then(data => this.setState({ data: data.data }))
+      .catch(e => e);
+  }
   render() {
+    console.log("this.state.data.cardData", this.state.data);
     return (
       <div>
-        <div>
-          <CARD_1
-            src={
-              "https://images.unsplash.com/photo-1433086966358-54859d0ed716?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        {this.state.data &&
+          this.state.data.length &&
+          this.state.data.map(item => {
+            console.log("item==>", item);
+            if (item.type === "TYPE_1") {
+              return (
+                <CARD_1
+                  src={item.cardData.image}
+                  Domestic={item.cardData.subtext}
+                  location={item.cardData.heading}
+                />
+              );
+            } else if (item.type === "TYPE_2") {
+              return (
+                <CARD_2
+                  src={item.cardData.bannerImage}
+                  Heading={" Duty on imported apples can't be more than 50%"}
+                  Brief={
+                    "Government has said there is no scope for India to increase the import duty on apples without further negotiations under the WTO regime"
+                  }
+                  Details={"KNOW MORE"}
+                />
+              );
+            } else if (item.type === "TYPE_3") {
+              return (
+                <CARD_3
+                  src={item.cardData.user.profileImage}
+                  collaboratedWith={item.cardData.user.collaboratedWith}
+                  company={"Xelpmoc"}
+                />
+              );
             }
-            Domestic={"Domestic"}
-            location={"Banerghatta Road,  Hulimavu, Bengaluru, Karnataka,"}
-          />
-          <CARD_2
-            Heading={" Duty on imported apples can't be more than 50%"}
-            Brief={
-              "Government has said there is no scope for India to increase the import duty on apples without further negotiations under the WTO regime"
-            }
-            Details={"KNOW MORE"}
-          />
-          <CARD_3
-            src={"https://avatars1.githubusercontent.com/u/21080254?s=460&v=4"}
-            name={"SALMAN KHAN"}
-            company={"Xelpmoc"}
-          />
-        </div>
+          })}
       </div>
     );
   }

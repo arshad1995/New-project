@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "./components/Card";
+import { Link } from "react-router-dom";
 
 class Feeds extends Component {
   state = {
@@ -17,7 +18,12 @@ class Feeds extends Component {
     return (
       <div>
         {this.state.data.map(a => (
-          <Card feedCreator={a.feedCreator} feedName={a.name} />
+          <Link
+            to={{ pathname: "/Feeds", id: a.id }}
+            style={{ textDecoration: "none" }}
+          >
+            <Card feedCreator={a.feedCreator} feedName={a.name} />
+          </Link>
         ))}
       </div>
     );

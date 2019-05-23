@@ -6,15 +6,15 @@
   height: 150px;
   margin: 10px 440px 0 440px;
   border-radius: 4px;
-  background-color: rgb(148, 144, 144);
+  background-color: rgb(212, 208, 208);
   cursor: pointer;
 }
 .creator {
-  margin: 85px 0 0 360px;
+  margin: 80px 0 0 360px;
   font-style: italic;
 }
 .feed {
   margin: 10px;
   color: rgb(197, 68, 21);
-  font-size: 6mm;
+  font-size: 7mm;
 }
